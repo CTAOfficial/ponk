@@ -1,7 +1,6 @@
 #pragma once
 #include "Basic2D.h"
 #include <SDL3/SDL_render.h>
-#include <queue>
 
 enum Direction {
 	Up,

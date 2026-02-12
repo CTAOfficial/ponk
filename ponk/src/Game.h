@@ -21,6 +21,5 @@ public:
 	Player* player2 = nullptr;
 	Ball* ball = nullptr;
 
-	//void HandlePoll(SDL_Event event) override;
 	void Update() override;
 };
