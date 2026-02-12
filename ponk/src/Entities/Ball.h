@@ -6,7 +6,6 @@ class Ball : public Basic2D {
 private:
 	Vector2 velocity;
 	Vector2 bounds;
-	int player = 0;
 	bool Flipping = false;
 	Basic2D* LastContact = nullptr;
 
@@ -19,7 +18,7 @@ public:
 
 	void Update(Game& game, float deltaTime) override;
 
-	void Flip(Basic2D& contact, int playerIndex);
-	void Reset(Game& game, int playerIndex);
+	void Flip(Basic2D& contact);
+	void Reset(Game& game);
 	void SetBounds(Vector2 bounds);
 };

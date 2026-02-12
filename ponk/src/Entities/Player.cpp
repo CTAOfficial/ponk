@@ -11,7 +11,7 @@ Player::Player(int index, Vector2 pos, RGBA rgba) : Basic2D::Basic2D(pos, Vector
 void Player::Update(Game& game, float deltaTime)
 {
 	if (IsOverlapping(*game.ball)) {
-		game.ball->Flip(*this, playerIndex);
+		game.ball->Flip(*this);
 	}
 
 	if (InputManager::GetKeyDown(UpKey)) {

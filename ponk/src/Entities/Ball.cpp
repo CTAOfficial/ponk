@@ -24,33 +24,28 @@ void Ball::Update(Game& game, float deltaTime)
 	{
 		game.score1->score++;
 		std::cout << "Score 1: " << game.score1->score << "\n";
-		Reset(game, 0);
+		Reset(game);
 	}
 	else if (IsOverlapping(*game.score2)) {
 		game.score2->score++;
 		std::cout << "Score 2: " << game.score2->score << "\n";
-		Reset(game, 0);
+		Reset(game);
 	}
 }
 
-void Ball::Flip(Basic2D& contact, int playerIndex)
+void Ball::Flip(Basic2D& contact)
 {
 	if (LastContact != nullptr && IsOverlapping(*LastContact)) {
 		return;
 	}
 	LastContact = &contact;
 
-	std::cout << "Ball Flipped!\n";
-	player = playerIndex;
-	std::cout << "Old Velocity: (" << velocity.X << ", " << velocity.Y << ")\n";
 	velocity = Vector2{ -velocity.X, -velocity.Y };
-	std::cout << "New Velocity: (" << velocity.X << ", " << velocity.Y << ")\n";
 }
 
-void Ball::Reset(Game& game, int playerIndex)
+void Ball::Reset(Game& game)
 {
 	position = game.screenCenter;
-	player = playerIndex;
 	LastContact = nullptr;
 }
 

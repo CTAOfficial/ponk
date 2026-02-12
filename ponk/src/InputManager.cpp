@@ -44,7 +44,6 @@ void InputManager::HandleKeyUp(SDL_Keycode key)
 
 void InputManager::Update()
 {
-	std::cout << upKeys.size() << "\n";
 	pressedKeys.clear();
 	upKeys.clear();
 }
