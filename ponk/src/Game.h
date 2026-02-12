@@ -4,12 +4,14 @@
 #include "Entities/Player.h"
 #include "Entities/Ball.h"
 #include "Logic/ScoreZone.h"
+#include "UI/ScoreUI.h"
 
 class Game : public Window {
 private:
 	
 	Vector2 Bounds;
 	Vector2 PlayerBounds;
+	ScoreUI* ui;
 
 public:
 	Game(std::string& title, Vector2 size);

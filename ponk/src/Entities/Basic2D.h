@@ -7,6 +7,10 @@ class Game;
 
 class Basic2D {
 public:
+	Basic2D(Vector2 pos, RGBA rgba) {
+		position = pos;
+		colour = rgba;
+	}
 	Basic2D(Vector2 pos, Vector2 dims, RGBA rgba) : rect{ (float)pos.X, (float)pos.Y, dims.X, dims.Y } {
 		position = pos;
 		colour = rgba;
