@@ -1,15 +1,15 @@
 #include "Basic2D.h"
+#include "../RGBA.h"
+
+
+void Basic2D::Draw(SDL_Renderer* renderer)
+{
+    rect = SDL_FRect{ position.X, position.Y, rect.w, rect.h };
+    SDL_SetRenderDrawColor(renderer, colour.R, colour.G, colour.B, colour.A);
+    SDL_RenderFillRect(renderer, &rect);
+}
 
 bool Basic2D::IsOverlapping(Basic2D& other)
 {
-    Vector2 selfBoundsTop(rect.w + position.X, rect.h + position.Y);
-    Vector2 selfBoundsBottom(-rect.w + position.X, -rect.h + position.Y);
-    Vector2 otherBoundsTop(other.rect.w + other.position.X, other.rect.h + other.position.Y);
-    Vector2 otherBoundsBottom(-other.rect.w + other.position.X, -other.rect.h + other.position.Y);
-
-    if (selfBoundsTop.X > otherBoundsTop.X) {
-
-    }
-
-    return false;
+    return SDL_HasRectIntersectionFloat(const_cast<SDL_FRect*>(&rect), const_cast<SDL_FRect*>(&other.rect));
 }

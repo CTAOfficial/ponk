@@ -10,9 +10,12 @@ private:
 
 protected:
 	Window(std::string& title, int width, int height);
-	Window() = default;
 	SDL_Window* window;
 	SDL_Renderer* renderer;
+
+	double deltaTime = 0.0;
+	Uint64 lastTick{ 0 };
+	Uint64 currentTick{ 0 };
 
 public:
 	~Window();	
@@ -23,9 +26,9 @@ public:
 
 	void Run();
 	virtual void HandlePoll(SDL_Event event);
-	virtual void Update();
+	virtual void Update(){}
 	void Close();
-	virtual void OnClose();
+	virtual void OnClose(){}
 
 	static Window* Create(std::string title, int width, int height);
 };

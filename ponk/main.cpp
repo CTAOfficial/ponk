@@ -7,7 +7,7 @@ int main() {
 
 	SDL_Init(SDL_INIT_VIDEO);
 
-	std::string name = "hi";
+	std::string name = "ponk";
 	Game* game = new Game(name, Vector2{ 1080, 720 });
 
 	game->Run();

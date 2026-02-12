@@ -3,9 +3,9 @@
 #include "../RGBA.h"
 #include "../Vector2.h"
 
-class ScoreZone : Basic2D {
+class ScoreZone : public Basic2D {
 public:
-	ScoreZone(Vector2 pos, RGBA rgba);
+	ScoreZone(Vector2 pos, Vector2 dims, RGBA rgba);
 
-
+	int score = 0;
 };

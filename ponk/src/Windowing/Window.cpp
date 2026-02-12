@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include "Window.h"
+#include "../InputManager.h"
 
 Window::Window(std::string& title, int width, int height)
 {
@@ -35,11 +36,19 @@ Window::~Window()
 void Window::Run()
 {
 	IsRunning = true;
+	currentTick = SDL_GetTicks();
+
 	while (IsRunning) {
+		lastTick = currentTick;
+		currentTick = SDL_GetTicks();
+		deltaTime = static_cast<double>(currentTick - lastTick) / 1000.0;
+
+		InputManager::Update();
 		SDL_Event event;
 		while (SDL_PollEvent(&event)) {
 			HandlePoll(event);
 		}
+
 		SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
 		SDL_RenderClear(renderer);
 		Update();
@@ -49,21 +58,9 @@ void Window::Run()
 
 void Window::HandlePoll(SDL_Event event)
 {
-	switch (event.type)
-	{
-		case SDL_EVENT_QUIT:
-			Close();
-			break;
-		case SDL_EVENT_KEY_DOWN:
-			if (event.key.key == SDLK_ESCAPE) { Close(); }
-			break;
-			
-	}
-}
+	if (event.type == SDL_EVENT_QUIT) { Close(); }
 
-void Window::Update()
-{
-
+	InputManager::Process(event);
 }
 
 void Window::Close()
@@ -73,9 +70,6 @@ void Window::Close()
 	//delete this;
 }
 
-void Window::OnClose()
-{
-}
 
 Window* Window::Create(std::string title, int width, int height)
 {
