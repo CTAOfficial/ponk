@@ -1,6 +1,7 @@
 #include "Game.h"
-#include <iostream>
 #include "InputManager.h"
+#include "Logic/ScoreManager.h"
+#include "Entities/Player.h"
 
 
 Game::Game(std::string& title, Vector2 size) : Window(title, (int)size.X, (int)size.Y)
@@ -8,7 +9,7 @@ Game::Game(std::string& title, Vector2 size) : Window(title, (int)size.X, (int)s
 	screenCenter = Vector2{ size.X * 0.5f, size.Y * 0.5f };
 	Bounds = size;
 
-	ui = new ScoreUI{ renderer, Vector2{ screenCenter.X, 1000}, RGBA{255, 255, 255 ,255} };
+	scoreManager = new ScoreManager(renderer, Vector2{ screenCenter.X, 700 }, RGBA{ 255, 255, 255, 255 });
 
 	player1 = new Player(0, Vector2{ 50, 50 }, RGBA{ 255, 255, 255, 255 });
 	player1->SetUpKey(SDLK_W);
@@ -22,6 +23,8 @@ Game::Game(std::string& title, Vector2 size) : Window(title, (int)size.X, (int)s
 
 	score1 = new ScoreZone(Vector2{ 0, 0 }, Vector2{ 10, size.Y }, RGBA{ 255, 0, 0, 0 });
 	score2 = new ScoreZone(Vector2{ Bounds.X - 10, 0 }, Vector2{ 10, size.Y }, RGBA{ 0, 255, 0, 0 });
+
+	ScoreManager::Update();
 	
 	player1->AssignZone(score1);
 	player2->AssignZone(score2);
@@ -39,7 +42,7 @@ void Game::Update() {
 	player1->Update(*this, deltaTime);
 	player2->Update(*this, deltaTime);
 
-	ui->Draw(renderer);
+	ScoreManager::Render(renderer);
 	score1->Draw(renderer);
 	score2->Draw(renderer);
 	ball->Draw(renderer);

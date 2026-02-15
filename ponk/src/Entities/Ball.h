@@ -8,6 +8,7 @@ private:
 	Vector2 bounds;
 	bool Flipping = false;
 	Basic2D* LastContact = nullptr;
+	float originalSpeed = 0;
 
 	void CheckBounds();
 

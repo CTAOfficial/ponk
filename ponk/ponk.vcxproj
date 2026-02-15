@@ -145,8 +145,9 @@
     <ClCompile Include="src\Entities\Player.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\InputManager.cpp" />
+    <ClCompile Include="src\Logic\ScoreManager.cpp" />
     <ClCompile Include="src\Logic\ScoreZone.cpp" />
-    <ClCompile Include="src\UI\ScoreUI.cpp" />
+    <ClCompile Include="src\UI\TextUI.cpp" />
     <ClCompile Include="src\Windowing\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -155,9 +156,10 @@
     <ClInclude Include="src\Entities\Player.h" />
     <ClInclude Include="src\Game.h" />
     <ClInclude Include="src\InputManager.h" />
+    <ClInclude Include="src\Logic\ScoreManager.h" />
     <ClInclude Include="src\Logic\ScoreZone.h" />
     <ClInclude Include="src\RGBA.h" />
-    <ClInclude Include="src\UI\ScoreUI.h" />
+    <ClInclude Include="src\UI\TextUI.h" />
     <ClInclude Include="src\Vector2.h" />
     <ClInclude Include="src\Windowing\Window.h" />
   </ItemGroup>

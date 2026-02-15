@@ -1,17 +1,22 @@
 #pragma once
 
 #include "Windowing/Window.h"
-#include "Entities/Player.h"
 #include "Entities/Ball.h"
+#include "Logic/ScoreManager.h"
 #include "Logic/ScoreZone.h"
-#include "UI/ScoreUI.h"
+#include "UI/TextUI.h"
+#include <string>
+#include "Vector2.h"
+
+class Player;
 
 class Game : public Window {
 private:
 	
 	Vector2 Bounds;
 	Vector2 PlayerBounds;
-	ScoreUI* ui;
+	ScoreManager* scoreManager = nullptr;
+	TextUI* ui = nullptr;
 
 public:
 	Game(std::string& title, Vector2 size);

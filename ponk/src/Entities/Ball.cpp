@@ -7,6 +7,7 @@
 Ball::Ball(Vector2 pos, RGBA rgba) : Basic2D::Basic2D(pos, Vector2{ 10, 10 }, rgba)
 {
 	velocity = { 1, 1};
+	originalSpeed = speed;
 }
 
 void Ball::Update(Game& game, float deltaTime)
@@ -22,13 +23,13 @@ void Ball::Update(Game& game, float deltaTime)
 
 	if (IsOverlapping(*game.score1)) 
 	{
-		game.score1->score++;
-		std::cout << "Score 1: " << game.score1->score << "\n";
+		game.score1->Score();
+		std::cout << "Score 1: " << game.score1->GetScore() << "\n";
 		Reset(game);
 	}
 	else if (IsOverlapping(*game.score2)) {
-		game.score2->score++;
-		std::cout << "Score 2: " << game.score2->score << "\n";
+		game.score2->Score();
+		std::cout << "Score 2: " << game.score2->GetScore() << "\n";
 		Reset(game);
 	}
 }
@@ -41,10 +42,12 @@ void Ball::Flip(Basic2D& contact)
 	LastContact = &contact;
 
 	velocity = Vector2{ -velocity.X, -velocity.Y };
+	speed += 25;
 }
 
 void Ball::Reset(Game& game)
 {
+	speed = originalSpeed;
 	position = game.screenCenter;
 	LastContact = nullptr;
 }
