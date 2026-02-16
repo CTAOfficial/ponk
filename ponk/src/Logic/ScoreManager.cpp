@@ -14,7 +14,8 @@ ScoreManager::ScoreManager(SDL_Renderer* renderer, Vector2 pos, RGBA rgba)
 
 	Instance = this;
 
-	text = new TextUI{ "build/fonts/Melon Pop.ttf", renderer, pos, rgba };
+	// TODO: fix issue with path, Uni doesnt need build/ but home does
+	text = new TextUI{ "fonts/Melon Pop.ttf", renderer, pos, rgba };
 }
 
 void ScoreManager::AddZone(ScoreZone& zone)

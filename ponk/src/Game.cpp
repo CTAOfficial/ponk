@@ -9,7 +9,7 @@ Game::Game(std::string& title, Vector2 size) : Window(title, (int)size.X, (int)s
 	screenCenter = Vector2{ size.X * 0.5f, size.Y * 0.5f };
 	Bounds = size;
 
-	scoreManager = new ScoreManager(renderer, Vector2{ screenCenter.X, 700 }, RGBA{ 255, 255, 255, 255 });
+	scoreManager = new ScoreManager(renderer, Vector2{ screenCenter.X, 690 }, RGBA{ 255, 255, 255, 255 });
 
 	player1 = new Player(0, Vector2{ 50, 50 }, RGBA{ 255, 255, 255, 255 });
 	player1->SetUpKey(SDLK_W);
